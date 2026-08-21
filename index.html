@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920, initial-scale=1.0">
+    <title>First Caffe Kiosk</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ==========================================
+         1. СТАРТОВИЙ ЕКРАН (#start-screen)
+         ========================================== -->
+    <div id="start-screen">
+        <img src="bg-sea.jpg" alt="Background" class="bg-media">
+        <div class="video-overlay"></div>
+        
+        <div class="start-content">
+            <h1>Welcome to First Caffe</h1>
+            <p>Touch screen to start your order</p>
+            <button id="start-btn" class="main-btn">START ORDER</button>
+        </div>
+
+        <div class="qr-scanner-overlay">
+            <!-- 1. Промокод із жовтою кнопкою зверху -->
+            <div class="qr-promo-hint">
+                <span>Have a promo code or voucher?</span>
+                <button id="manual-code-btn" class="manual-link-btn">Enter Promo Code Manually</button>
+            </div>
+
+            <!-- 2. Чистий QR-код знизу (без фону та рамки) -->
+            <div class="qr-code-box">
+                <div class="qr-icon-wrapper">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://firstfood.com" alt="QR Code" class="qr-image">
+                </div>
+                <div class="qr-text">
+                    SCAN QR<br>
+                    CODE HERE
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         2. ГОЛОВНИЙ ЕКРАН МЕНЮ (#main-screen)
+         ========================================== -->
+    <div id="main-screen" class="hidden">
+        <div class="main-layout">
+            
+            <!-- Ліва панель: Категорії -->
+            <aside class="sidebar">
+                <h2 class="logo">FIRST FOOD</h2>
+                <button class="category-btn active" data-category="burgers">Burgers</button>
+                <button class="category-btn" data-category="drinks">Drinks</button>
+                <button class="category-btn" data-category="desserts">Desserts</button>
+            </aside>
+
+            <!-- Центральна панель: Сітка товарів -->
+            <main class="products-section">
+                <div id="products-container" class="products-grid"></div>
+            </main>
+
+            <!-- Права панель: Кошик (плаваючий внизу праворуч) -->
+            <aside class="cart-sidebar">
+                <h2>Your Order</h2>
+                <div class="cart-footer">
+                    <div class="total-price">
+                        <span>Total:</span>
+                        <span class="price-value">€<span id="total-amount">0.00</span></span>
+                    </div>
+                    <button id="checkout-btn" class="checkout-btn">Checkout</button>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+
+    <!-- ==========================================
+         3. МОДАЛЬНЕ ВІКНО ЧЕКАУТУ
+         ========================================== -->
+    <div id="checkout-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Your Review Order</h2>
+                <button id="close-modal-btn" class="close-btn">&times;</button>
+            </div>
+            
+            <div id="modal-cart-items" class="modal-cart-items"></div>
+
+            <div class="modal-footer">
+                <div class="modal-total">
+                    <span>Total:</span>
+                    <span class="price-value">€<span id="modal-total-amount">0.00</span></span>
+                </div>
+                <button id="confirm-order-btn">Proceed to Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
