@@ -55,7 +55,8 @@
             
             <!-- Панель категорій -->
             <aside class="sidebar">
-                <button class="category-btn active" data-category="burgers">Burgers</button>
+                <button class="category-btn active" data-category="popular">🔥 Popular</button>
+                <button class="category-btn" data-category="burgers">Burgers</button>
                 <button class="category-btn" data-category="meals">Meals</button>
                 <button class="category-btn" data-category="drinks">Drinks</button>
                 <button class="category-btn" data-category="desserts">Desserts</button>
@@ -64,6 +65,7 @@
 
             <!-- Центральна панель: Сітка товарів -->
             <main class="products-section">
+                <h2 id="category-title" class="section-title">🔥 Popular Items</h2>
                 <div id="products-container" class="products-grid"></div>
             </main>
 
@@ -212,6 +214,72 @@
             <div class="icon-fix"></div>
         </div>
         <p class="success-text">Promo Code Applied!</p>
+    </div>
+</div>
+<!-- Payment Method Selection Modal -->
+<div id="payment-modal" class="payment-modal-overlay hidden">
+    <div class="payment-glass-card">
+        <button id="close-payment-modal" class="payment-close-btn">&times;</button>
+        
+        <div class="payment-grid">
+            <!-- 1. Cash (Готівка - пачка грошей) -->
+            <button class="pay-method-btn pay-card" data-method="cash">
+                <div class="pay-icon">💵</div>
+                <div>
+                    <div class="pay-title">Cash</div>
+                    <div class="pay-desc">Pay upon delivery now</div>
+                </div>
+            </button>
+
+            <!-- 2. Card (Картка - кредитна картка) -->
+            <button class="pay-method-btn pay-card" data-method="card">
+                <div class="pay-icon">💳</div>
+                <div>
+                    <div class="pay-title">Card</div>
+                    <div class="pay-desc">Pay online now</div>
+                </div>
+            </button>
+
+            <!-- 3. Apple Pay (Dark Card) -->
+            <button class="pay-method-btn pay-card dark" data-method="apple">
+                <div class="pay-icon"></div>
+                <div>
+                    <div class="pay-title">Apple Pay</div>
+                    <div class="pay-desc">Quick & secure pay</div>
+                </div>
+            </button>
+
+            <!-- 4. Google Pay -->
+            <button class="pay-method-btn pay-card" data-method="google">
+                <div class="pay-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.19v3.15C3.2 21.32 7.28 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.19C.43 8.1 0 9.8 0 12s.43 3.9 1.19 5.42l4.09-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.28 0 3.2 2.68 1.19 6.58l4.09 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+                </div>
+                <div>
+                    <div class="pay-title">Google Pay</div>
+                    <div class="pay-desc">Fast checkout</div>
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Success Order Screen Modal -->
+<div id="success-order-screen" class="success-screen-overlay hidden">
+    <div class="success-glass-card">
+        <!-- Success Icon -->
+        <div class="success-icon-wrapper">✓</div>
+        
+        <!-- Texts -->
+        <h2 class="success-title">Order Placed Successfully!</h2>
+        <p class="success-subtitle">Your delicious food is already being prepared.</p>
+        
+        <!-- Order Number Box -->
+        <div class="order-number-box">
+            <div class="order-number-label">Your Order Number</div>
+            <div id="order-number-display" class="order-number-value">#42</div>
+        </div>
+        
+        <!-- Finish Button -->
+        <button id="finish-order-btn" class="success-finish-btn">Start New Order</button>
     </div>
 </div>
     <script src="script.js"></script>

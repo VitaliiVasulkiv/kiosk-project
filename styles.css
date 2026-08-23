@@ -637,6 +637,142 @@ body {
 #confirm-order-btn:hover {
     background-color: #218838;
 }
+/* --- Стилізація вікна перегляду замовлення під Glassmorphism --- */
+#checkout-modal.modal {
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+#checkout-modal .modal-content {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 40px;
+    padding: 40px;
+    width: 620px;
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+}
+
+#checkout-modal .modal-header h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+#checkout-modal .close-btn {
+    background: #f0f0f0;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+#checkout-modal .close-btn:hover {
+    background: #e0e0e0;
+}
+
+#checkout-modal .modal-cart-items {
+    max-height: 340px;
+    overflow-y: auto;
+    margin: 20px 0;
+    padding-right: 5px;
+}
+
+#checkout-modal .modal-footer {
+    border-top: 2px solid rgba(0, 0, 0, 0.06);
+    padding-top: 20px;
+    margin-top: 0;
+}
+
+#checkout-modal .modal-total {
+    font-size: 18px;
+    font-weight: 700;
+    color: #555;
+}
+
+#checkout-modal .modal-total .price-value {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+#checkout-modal #confirm-order-btn {
+    background: #28a745;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 18px;
+    font-size: 18px;
+    font-weight: 700;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(40, 167, 69, 0.3);
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    margin-top: 15px;
+}
+
+#checkout-modal #confirm-order-btn:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(40, 167, 69, 0.4);
+}
+
+#checkout-modal #confirm-order-btn:active {
+    transform: scale(0.98);
+}
+/* --- Стилі для лічильника кількості в модальному вікні замовлення --- */
+.modal-cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f0f0f0;
+    padding: 6px 12px;
+    border-radius: 12px;
+    margin: 0 15px;
+}
+
+.qty-btn {
+    background: #ffffff;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 800;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background 0.2s, transform 0.1s;
+}
+
+.qty-btn:hover {
+    background: #e30613;
+    color: #fff;
+}
+
+.qty-btn:active {
+    transform: scale(0.92);
+}
+
+.modal-cart-item-quantity span {
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+    min-width: 20px;
+    text-align: center;
+}
 /* Виправлення розміру віртуальної клавіатури */
 .kiosk-keyboard {
     display: flex !important;
@@ -802,4 +938,472 @@ body {
     65% { width: 0; left: 46px; top: 54px; }
     84% { width: 40px; left: 31px; top: 38px; }
     100% { width: 40px; left: 31px; top: 38px; }
+}
+
+/* --- PAYMENT MODAL STYLES (Enlarged Apple Glass Style) --- */
+.payment-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.payment-modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+/* --- Збільшений головний контейнер для термінала --- */
+.payment-glass-card {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 48px;
+    padding: 50px; /* Збільшені внутрішні відступи */
+    width: 600px;  /* Зробили вікно таким же великим, як екран успіху */
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.5);
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Кнопка закриття */
+.payment-close-btn {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.payment-close-btn:hover {
+    color: #fff;
+}
+
+/* Сітка для карток із більшими відступами */
+.payment-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-top: 14px;
+}
+
+/* Окрема картка оплати */
+.pay-card {
+    background: #f4f4f1;
+    border-radius: 26px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    min-height: 170px; /* Зробили картки вищими */
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.pay-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
+}
+
+.pay-card:active {
+    transform: scale(0.96);
+}
+
+/* Темна картка (Apple Pay) */
+.pay-card.dark {
+    background: #191919;
+    color: #ffffff;
+}
+
+.pay-card.dark .pay-desc {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Іконки всередині карток */
+.pay-icon {
+    font-size: 38px; /* Збільшені іконки */
+    margin-bottom: 18px;
+}
+
+.pay-card.dark .pay-icon {
+    color: #fff;
+}
+
+/* Текст */
+.pay-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+}
+.pay-card.dark .pay-title {
+    color: #fff;
+}
+
+.pay-desc {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.3;
+}
+.success-screen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2500;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.success-screen-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+/* Велика преміальна картка для термінала */
+.success-glass-card {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 48px;
+    padding: 60px 50px;
+    width: 600px; /* Зробили вікно значно ширшим і більшим */
+    text-align: center;
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.55);
+    animation: scaleUpModal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes scaleUpModal {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Велика анімована іконка галочки */
+.success-icon-wrapper {
+    width: 95px;
+    height: 95px;
+    background: rgba(40, 167, 69, 0.9);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    margin: 0 auto 28px auto;
+    box-shadow: 0 0 40px rgba(40, 167, 69, 0.7);
+}
+
+/* Заголовок та підзаголовок */
+.success-title {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.success-subtitle {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+/* Великий блок з номером замовлення */
+.order-number-box {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 35px;
+}
+
+.order-number-label {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.order-number-value {
+    color: #ffffff;
+    font-size: 48px; /* Зробили номер замовлення величезним і помітним */
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+/*Велика зручна кнопка для пальця */
+.success-finish-btn {
+    background: #ffffff;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 24px;
+    padding: 20px 32px;
+    font-size: 18px;
+    font-weight: 700;
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.success-finish-btn:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+}
+
+.success-finish-btn:active {
+    transform: scale(0.97);
+}
+/* Контейнер для сповіщень */
+#toast-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.toast-message {
+    background: rgba(15, 15, 15, 0.9);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: #ffffff;
+    padding: 28px 48px; /* Збільшили внутрішні відступи (плашка стала крупнішою) */
+    border-radius: 24px;
+    font-size: 22px; /* Зробили шрифт помітно більшим */
+    font-weight: 700; /* Зробили жирнішим */
+    letter-spacing: 0.8px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: center;
+}
+
+.toast-message.show {
+    opacity: 1;
+    transform: scale(1);
+}
+.section-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 25px;
+    text-align: left;
+    padding-left: 20px; /* Трохи відступу від краю */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+/* Звичайна сітка залишається для всіх інших категорій */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* чи твоя поточна сітка */
+    gap: 15px;
+}
+
+/* Ідеально рівна подовгаста картка для вкладки Popular */
+/* Сучасна, преміальна подовгаста картка для вкладки Popular */
+.product-card.popular-wide-card {
+    grid-column: 1 / -1; /* На всю ширину сітки */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.92); /* М'який напівпрозорий фон */
+    backdrop-filter: blur(10px); /* Ефект розмиття скла */
+    border-radius: 20px;
+    padding: 16px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); /* Глибока, красива тінь */
+    margin-bottom: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card.popular-wide-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+.popular-wide-card .card-content {
+    flex: 1;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Бейдж «Хіт продажу» */
+.popular-wide-card .badge {
+    background: linear-gradient(135deg, #ff4757, #ff6b81);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    width: fit-content;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.popular-wide-card h3 {
+    margin: 4px 0 8px 0;
+    font-size: 1.2rem;
+    color: #111;
+}
+
+.popular-wide-card .popular-img {
+    width: 130px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 14px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Кнопка замовлення */
+.popular-wide-card .add-btn {
+    background: linear-gradient(135deg, #ff4757, #e84118);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 9px 16px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+    box-shadow: 0 4px 12px rgba(255, 71, 87, 0.4);
+    transition: opacity 0.2s;
+}
+
+.popular-wide-card .add-btn:hover {
+    opacity: 0.9;
+}
+#products-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Дві колонки для звичайних карток */
+    gap: 12px;
+    padding: 10px;
+}
+
+/* Мега-стильна широка картка для Popular */
+.product-card.popular-wide-card {
+    grid-column: 1 / -1 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    padding: 16px 20px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    gap: 15px !important;
+}
+
+/* Картинка зліва */
+.popular-wide-card .popular-img {
+    width: 110px !important;
+    height: 90px !important;
+    background-size: cover !important;
+    background-position: center !important;
+    border-radius: 14px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Контекст посередині */
+.popular-wide-card .card-content {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    text-align: left !important;
+}
+
+/* Бейдж Best Seller */
+.popular-wide-card .badge {
+    background: #ff4757 !important;
+    color: #fff !important;
+    padding: 2px 8px !important;
+    border-radius: 6px !important;
+    font-size: 0.7rem !important;
+    font-weight: bold !important;
+    width: fit-content !important;
+    margin-bottom: 4px !important;
+    text-transform: uppercase !important;
+}
+
+/* Назва товару */
+.popular-wide-card h3 {
+    margin: 0 0 4px 0 !important;
+    font-size: 1.1rem !important;
+    color: #111 !important;
+    font-weight: 700 !important;
+}
+
+/* Ціна */
+.popular-wide-card .price-block {
+    font-size: 0.95rem !important;
+}
+
+/* Компактна і стильна кнопка замовлення справа */
+.product-card.popular-wide-card .add-btn {
+    width: auto !important; /* Скасовуємо повну ширину */
+    flex-shrink: 0 !important;
+    background: #ff3b30 !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 10px 18px !important;
+    font-weight: bold !important;
+    font-size: 0.85rem !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(255, 59, 48, 0.3) !important;
+}
+.popular-wide-card .add-btn:hover {
+    background: #e0322b !important;
 }

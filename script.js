@@ -25,7 +25,6 @@ const products = [
         id: 3, 
         name: "French Fries", 
         price: 2.50, 
-        oldPrice: 3.20,
         category: "burgers", 
         calories: "365 kcal", 
         ingredients: "Crispy potatoes, salt, vegetable oil", 
@@ -35,7 +34,6 @@ const products = [
         id: 4, 
         name: "Chicken Nuggets (6 pcs)", 
         price: 4.00, 
-        oldPrice: 5.00,
         category: "burgers", 
         calories: "310 kcal", 
         ingredients: "Tender chicken breast in crispy breading, served with sauce", 
@@ -45,7 +43,6 @@ const products = [
         id: 5, 
         name: "Double Bacon Burger", 
         price: 7.80, 
-        oldPrice: 9.50,
         category: "burgers", 
         calories: "780 kcal", 
         ingredients: "Double beef patty, crispy bacon, cheddar cheese, BBQ sauce, onions", 
@@ -55,7 +52,6 @@ const products = [
         id: 6, 
         name: "Onion Rings", 
         price: 3.00, 
-        oldPrice: 3.80,
         category: "burgers", 
         calories: "340 kcal", 
         ingredients: "Crispy battered onion rings, deep-fried", 
@@ -64,9 +60,9 @@ const products = [
     { 
         id: 24, 
         name: "Spicy Chicken Burger", 
-        price: 6.20, 
+        price: 4.99, 
         oldPrice: 7.50,
-        category: "burgers", 
+        category: "popular", 
         calories: "590 kcal", 
         ingredients: "Spicy crispy chicken fillet, lettuce, signature hot sauce, pickles", 
         image: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=400&q=80" 
@@ -74,8 +70,7 @@ const products = [
     { 
         id: 25, 
         name: "Royal Mushroom Burger", 
-        price: 7.20, 
-        oldPrice: 8.50,
+        price: 6.20, 
         category: "burgers", 
         calories: "610 kcal", 
         ingredients: "Beef patty, sautéed mushrooms, Swiss cheese, garlic mayo", 
@@ -86,8 +81,7 @@ const products = [
     { 
         id: 20, 
         name: "Signature Meal", 
-        price: 9.50, 
-        oldPrice: 11.50,
+        price: 11.50, 
         category: "meals", 
         calories: "1120 kcal", 
         ingredients: "Signature Burger + French Fries + Coca-Cola 0.5l", 
@@ -97,7 +91,6 @@ const products = [
         id: 21, 
         name: "Cheeseburger Meal", 
         price: 8.00, 
-        oldPrice: 10.00,
         category: "meals", 
         calories: "980 kcal", 
         ingredients: "Cheeseburger + French Fries + Coca-Cola 0.5l", 
@@ -107,7 +100,6 @@ const products = [
         id: 22, 
         name: "Chicken Nugget Box", 
         price: 7.50, 
-        oldPrice: 9.00,
         category: "meals", 
         calories: "850 kcal", 
         ingredients: "9 pcs Chicken Nuggets + French Fries + Drink of choice", 
@@ -117,7 +109,6 @@ const products = [
         id: 23, 
         name: "Double Bacon Meal", 
         price: 10.20, 
-        oldPrice: 12.50,
         category: "meals", 
         calories: "1250 kcal", 
         ingredients: "Double Bacon Burger + French Fries + Coca-Cola 0.5l", 
@@ -126,9 +117,9 @@ const products = [
     { 
         id: 26, 
         name: "Spicy Chicken Meal", 
-        price: 9.00, 
+        price: 7.00, 
         oldPrice: 11.00,
-        category: "meals", 
+        category: "popular", 
         calories: "1060 kcal", 
         ingredients: "Spicy Chicken Burger + French Fries + Coca-Cola 0.5l", 
         image: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=400&q=80" 
@@ -137,7 +128,6 @@ const products = [
         id: 27, 
         name: "Royal Mushroom Meal", 
         price: 9.80, 
-        oldPrice: 11.80,
         category: "meals", 
         calories: "1080 kcal", 
         ingredients: "Royal Mushroom Burger + French Fries + Coca-Cola 0.5l", 
@@ -149,7 +139,6 @@ const products = [
         id: 7, 
         name: "Coca-Cola 0.5l", 
         price: 2.00, 
-        oldPrice: 2.50,
         category: "drinks", 
         calories: "210 kcal", 
         ingredients: "Carbonated water, sugar, caramel color, phosphoric acid, natural flavors, caffeine", 
@@ -159,7 +148,6 @@ const products = [
         id: 8, 
         name: "Orange Juice", 
         price: 3.20, 
-        oldPrice: 3.80,
         category: "drinks", 
         calories: "110 kcal", 
         ingredients: "100% freshly squeezed orange juice, vitamin C", 
@@ -169,7 +157,6 @@ const products = [
         id: 9, 
         name: "Mineral Water 0.5l", 
         price: 1.50, 
-        oldPrice: 1.90,
         category: "drinks", 
         calories: "0 kcal", 
         ingredients: "Pure natural still mineral water", 
@@ -179,7 +166,6 @@ const products = [
         id: 10, 
         name: "Lemonade", 
         price: 2.80, 
-        oldPrice: 3.50,
         category: "drinks", 
         calories: "150 kcal", 
         ingredients: "Filtered water, fresh lemon juice, cane sugar, mint", 
@@ -189,7 +175,6 @@ const products = [
         id: 28, 
         name: "Sprite 0.5l", 
         price: 2.00, 
-        oldPrice: 2.50,
         category: "drinks", 
         calories: "190 kcal", 
         ingredients: "Carbonated water, sugar, citric acid, natural lemon and lime flavors", 
@@ -199,7 +184,6 @@ const products = [
         id: 29, 
         name: "Fanta 0.5l", 
         price: 2.00, 
-        oldPrice: 2.50,
         category: "drinks", 
         calories: "210 kcal", 
         ingredients: "Carbonated water, sugar, orange juice from concentrate, citric acid", 
@@ -209,7 +193,6 @@ const products = [
         id: 30, 
         name: "Apple Juice", 
         price: 3.00, 
-        oldPrice: 3.60,
         category: "drinks", 
         calories: "115 kcal", 
         ingredients: "100% clarified apple juice, natural sweetness", 
@@ -218,8 +201,7 @@ const products = [
     { 
         id: 31, 
         name: "Peach Juice", 
-        price: 3.00, 
-        oldPrice: 3.60,
+        price: 3.20,
         category: "drinks", 
         calories: "125 kcal", 
         ingredients: "Peach puree, water, sugar, vitamin C", 
@@ -231,7 +213,6 @@ const products = [
         id: 11, 
         name: "Cheesecake", 
         price: 4.20, 
-        oldPrice: 5.20,
         category: "desserts", 
         calories: "410 kcal", 
         ingredients: "Cream cheese, graham cracker crust, sugar, vanilla, berry topping", 
@@ -241,7 +222,6 @@ const products = [
         id: 12, 
         name: "Chocolate Donut", 
         price: 2.00, 
-        oldPrice: 2.60,
         category: "desserts", 
         calories: "290 kcal", 
         ingredients: "Dough, chocolate glaze, sprinkles", 
@@ -251,7 +231,6 @@ const products = [
         id: 37, 
         name: "Fruit Tart", 
         price: 3.90, 
-        oldPrice: 4.80,
         category: "desserts", 
         calories: "220 kcal", 
         ingredients: "Shortcrust pastry, pastry cream, fresh seasonal fruits", 
@@ -261,7 +240,6 @@ const products = [
         id: 13, 
         name: "Apple Pie", 
         price: 3.50, 
-        oldPrice: 4.20,
         category: "desserts", 
         calories: "260 kcal", 
         ingredients: "Flaky pastry crust, diced apples, cinnamon, brown sugar", 
@@ -271,7 +249,6 @@ const products = [
         id: 36, 
         name: "Tiramisu", 
         price: 4.80, 
-        oldPrice: 5.80,
         category: "desserts", 
         calories: "280 kcal", 
         ingredients: "Mascarpone, ladyfingers, coffee, cocoa powder, sugar", 
@@ -283,7 +260,6 @@ const products = [
         id: 14, 
         name: "Cappuccino", 
         price: 2.80, 
-        oldPrice: 3.40,
         category: "caffe", 
         calories: "120 kcal", 
         ingredients: "Espresso, steamed milk, rich milk foam", 
@@ -293,7 +269,6 @@ const products = [
         id: 15, 
         name: "Caffe Latte", 
         price: 3.00, 
-        oldPrice: 3.70,
         category: "caffe", 
         calories: "150 kcal", 
         ingredients: "Espresso, lots of steamed milk, thin layer of foam", 
@@ -303,7 +278,6 @@ const products = [
         id: 16, 
         name: "Espresso", 
         price: 1.80, 
-        oldPrice: 2.20,
         category: "caffe", 
         calories: "10 kcal", 
         ingredients: "Pure concentrated coffee shot", 
@@ -312,29 +286,53 @@ const products = [
 ];
 
 let cart = [];
-let currentCategory = 'burgers';
+let currentCategory = 'popular'; // Виправлено описку з 'pupular'
 
-// Виносимо renderProducts на глобальний рівень, щоб до нього був доступ звідусіль
-function renderProducts() {
+function renderProducts(categoryToRender = currentCategory) {
     const productsContainer = document.getElementById('products-container');
     if (!productsContainer) return;
     productsContainer.innerHTML = '';
     
-    const filteredProducts = products.filter(p => p.category === currentCategory);
+    const filteredProducts = products.filter(p => p.category === categoryToRender);
 
-    filteredProducts.forEach(product => {
+    filteredProducts.forEach((product, index) => {
         const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `
-            <button class="info-btn" onclick="showProductInfo(${product.id})">i</button>
-            <img src="${product.image}" alt="${product.name}" class="product-img">
-            <h3>${product.name}</h3>
-            <p>
-                <span style="text-decoration: line-through; color: #888; font-size: 0.85em; margin-right: 6px;">€${product.oldPrice.toFixed(2)}</span>
-                €${product.price.toFixed(2)}
-            </p>
-            <button class="add-btn" data-id="${product.id}">Add to Order</button>
-        `;
+
+        // Перевірка: якщо це вкладка popular і перші два товари
+        if (categoryToRender === 'popular' && (index === 0 || index === 1)) {
+            card.className = 'product-card popular-wide-card';
+            
+            // Стара ціна виводиться лише тут, якщо вона задана в об'єкті товару
+            const oldPriceHtml = product.oldPrice 
+                ? `<span style="text-decoration: line-through; color: #888; font-size: 0.85em; margin-right: 6px;">€${product.oldPrice.toFixed(2)}</span>` 
+                : '';
+
+            card.innerHTML = `
+                <button class="info-btn" onclick="showProductInfo(${product.id})" style="position: absolute; top: 10px; right: 10px;">i</button>
+                <div class="popular-img" style="background-image: url('${product.image}');"></div>
+                <div class="card-content">
+                    <div class="badge">Best Seller 🔥</div>
+                    <h3>${product.name}</h3>
+                    <div class="price-block">
+                        ${oldPriceHtml}
+                        <strong style="color: #ff3b30; font-size: 1.1rem;">€${product.price.toFixed(2)}</strong>
+                    </div>
+                </div>
+                <button class="add-btn" data-id="${product.id}">Order Now</button>
+            `;
+        } else {
+            // Звичайний формат карток (без старої ціни)
+            card.className = 'product-card';
+            card.innerHTML = `
+                <button class="info-btn" onclick="showProductInfo(${product.id})">i</button>
+                <img src="${product.image}" alt="${product.name}" class="product-img">
+                <h3>${product.name}</h3>
+                <p>
+                    €${product.price.toFixed(2)}
+                </p>
+                <button class="add-btn" data-id="${product.id}">Add to Order</button>
+            `;
+        }
         
         card.querySelector('.add-btn').addEventListener('click', (e) => {
             animateFlyToCart(e);
@@ -344,11 +342,16 @@ function renderProducts() {
         productsContainer.appendChild(card);
     });
 }
-
+// Додавання товару в кошик (з урахуванням кількості)
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     if (product) {
-        cart.push(product);
+        const existingItem = cart.find(item => item.id === productId);
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ ...product, quantity: 1 });
+        }
         updateCart();
     }
 }
@@ -356,13 +359,13 @@ function addToCart(productId) {
 function updateCart() {
     const totalAmountEl = document.getElementById('total-amount');
     if (totalAmountEl) {
-        let total = cart.reduce((sum, item) => sum + item.price, 0);
+        let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         totalAmountEl.textContent = total.toFixed(2);
     }
 
     const badge = document.getElementById('cart-badge');
     if (badge) {
-        const totalCount = cart.length;
+        const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
         if (totalCount > 0) {
             badge.textContent = totalCount;
             badge.classList.remove('hidden');
@@ -382,9 +385,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkoutModal = document.getElementById('checkout-modal');
     const closeModalBtn = document.getElementById('close-modal-btn');
     const checkoutBtn = document.getElementById('view-order-btn');
-    const modalCartItems = document.getElementById('modal-cart-items');
-    const modalTotalAmount = document.getElementById('modal-total-amount');
     const confirmOrderBtn = document.getElementById('confirm-order-btn');
+
+    const paymentModal = document.getElementById('payment-modal');
+    const closePaymentModalBtn = document.getElementById('close-payment-modal');
+    const successOrderScreen = document.getElementById('success-order-screen');
+    const finishOrderBtn = document.getElementById('finish-order-btn');
+    const orderNumberDisplay = document.getElementById('order-number-display');
 
     if (startBtn) {
         startBtn.addEventListener('click', () => {
@@ -394,23 +401,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Єдина правильна логіка перемикання категорій
     document.querySelectorAll('.category-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
             
             const targetBtn = e.target.closest('.category-btn');
-            if (targetBtn) {
-                targetBtn.classList.add('active');
-                currentCategory = targetBtn.dataset.category || 'burgers';
-                renderProducts();
+            if (!targetBtn) return;
+
+            targetBtn.classList.add('active');
+            currentCategory = targetBtn.dataset.category || 'popular';
+
+            const productsContainer = document.getElementById('products-container');
+            const titleEl = document.getElementById('category-title');
+
+            if (currentCategory === 'popular') {
+                if (titleEl) titleEl.textContent = '🔥 Popular Items';
+                if (productsContainer) productsContainer.classList.add('popular-view');
+            } else {
+                if (productsContainer) productsContainer.classList.remove('popular-view');
+                
+                if (titleEl) {
+                    if (currentCategory === 'burgers') titleEl.textContent = '🍔 Juicy Burgers';
+                    else if (currentCategory === 'meals') titleEl.textContent = '🍟 Combo Meals';
+                    else if (currentCategory === 'drinks') titleEl.textContent = '🥤 Refreshing Drinks';
+                    else if (currentCategory === 'desserts') titleEl.textContent = '🍰 Sweet Desserts';
+                    else if (currentCategory === 'caffe') titleEl.textContent = '☕ Caffe';
+                }
             }
+
+            renderProducts(currentCategory);
         });
     });
 
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
             if (cart.length === 0) {
-                alert('Your cart is empty!');
+                showToast('Your cart is empty!');
                 return;
             }
             openModal();
@@ -423,55 +450,115 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function openModal() {
-        if (!modalCartItems || !modalTotalAmount || !checkoutModal) return;
-        
-        modalCartItems.innerHTML = '';
-        let total = 0;
-
-        cart.forEach((item, index) => {
-            total += item.price;
-            const div = document.createElement('div');
-            div.className = 'modal-cart-item';
-            div.innerHTML = `
-                <img src="${item.image}" alt="${item.name}">
-                <div class="modal-cart-item-info">
-                    <h4>${item.name}</h4>
-                    <p>
-                        <span style="text-decoration: line-through; color: #888; font-size: 0.85em; margin-right: 6px;">€${item.oldPrice.toFixed(2)}</span>
-                        €${item.price.toFixed(2)}
-                    </p>
-                </div>
-                <button class="remove-item-btn" data-index="${index}">&times;</button>
-            `;
-            modalCartItems.appendChild(div);
-        });
-
-        modalCartItems.querySelectorAll('.remove-item-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const idx = parseInt(e.target.dataset.index);
-                cart.splice(idx, 1);
-                updateCart();
-                openModal();
-                if (cart.length === 0) {
-                    checkoutModal.classList.add('hidden');
-                }
-            });
-        });
-
-        modalTotalAmount.textContent = total.toFixed(2);
-        checkoutModal.classList.remove('hidden');
-    }
-
+    // Замість старого alert відкриваємо модалку вибору оплати
     if (confirmOrderBtn) {
         confirmOrderBtn.addEventListener('click', () => {
-            alert('Order placed successfully! Proceeding to payment...');
+            if (cart.length === 0) {
+                showToast('Your cart is empty!');
+                return;
+            }
+            if (checkoutModal) checkoutModal.classList.add('hidden');
+            if (paymentModal) paymentModal.classList.remove('hidden');
+        });
+    }
+
+    // Закриття вікна оплати
+    if (closePaymentModalBtn) {
+        closePaymentModalBtn.addEventListener('click', () => {
+            if (paymentModal) paymentModal.classList.add('hidden');
+        });
+    }
+
+    // Вибір методу оплати (карта / готівка)
+    document.querySelectorAll('.pay-method-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (paymentModal) paymentModal.classList.add('hidden');
+
+            const randomOrderNum = Math.floor(Math.random() * 90) + 10;
+            if (orderNumberDisplay) {
+                orderNumberDisplay.textContent = `#${randomOrderNum}`;
+            }
+
+            if (successOrderScreen) {
+                successOrderScreen.classList.remove('hidden');
+            }
+
             cart = [];
             updateCart();
-            checkoutModal.classList.add('hidden');
+        });
+    });
+
+    // Повернення на стартовий екран після натискання "Start New Order"
+    if (finishOrderBtn) {
+        finishOrderBtn.addEventListener('click', () => {
+            if (successOrderScreen) successOrderScreen.classList.add('hidden');
+            if (startScreen) startScreen.classList.remove('hidden');
+            if (mainScreen) mainScreen.classList.add('hidden');
         });
     }
 });
+
+function openModal() {
+    const checkoutModal = document.getElementById('checkout-modal');
+    const modalCartItems = document.getElementById('modal-cart-items');
+    const modalTotalAmount = document.getElementById('modal-total-amount');
+
+    if (!modalCartItems || !modalTotalAmount || !checkoutModal) return;
+    
+    modalCartItems.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item) => {
+        total += item.price * item.quantity;
+        const div = document.createElement('div');
+        div.className = 'modal-cart-item';
+        div.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <div class="modal-cart-item-info">
+                <h4>${item.name}</h4>
+                <p>€${(item.price * item.quantity).toFixed(2)}</p>
+            </div>
+            <div class="modal-cart-item-quantity" style="display: flex; align-items: center; gap: 10px; margin: 0 10px;">
+                <button class="qty-btn decrease-btn" data-id="${item.id}" style="width: 28px; height: 28px; border-radius: 6px; border: none; background: #ddd; font-weight: bold; cursor: pointer;">-</button>
+                <span style="font-weight: bold; min-width: 15px; text-align: center;">${item.quantity}</span>
+                <button class="qty-btn increase-btn" data-id="${item.id}" style="width: 28px; height: 28px; border-radius: 6px; border: none; background: #ddd; font-weight: bold; cursor: pointer;">+</button>
+            </div>
+            <button class="remove-item-btn" data-id="${item.id}">&times;</button>
+        `;
+        modalCartItems.appendChild(div);
+    });
+
+    // Обробка кліків по кнопках +, -, та видалення хрестиком всередині модалки
+    modalCartItems.onclick = (e) => {
+        const id = parseInt(e.target.dataset.id);
+        if (!id) return;
+
+        const cartItem = cart.find(item => item.id === id);
+        if (!cartItem) return;
+
+        if (e.target.classList.contains('increase-btn')) {
+            cartItem.quantity += 1;
+        } else if (e.target.classList.contains('decrease-btn')) {
+            cartItem.quantity -= 1;
+            if (cartItem.quantity <= 0) {
+                cart = cart.filter(item => item.id !== id);
+            }
+        } else if (e.target.classList.contains('remove-item-btn')) {
+            cart = cart.filter(item => item.id !== id);
+        }
+
+        updateCart();
+        
+        if (cart.length === 0) {
+            checkoutModal.classList.add('hidden');
+        } else {
+            openModal(); // Оновлюємо модалку
+        }
+    };
+
+    modalTotalAmount.textContent = total.toFixed(2);
+    checkoutModal.classList.remove('hidden');
+}
 
 function showProductInfo(productId) {
     const product = products.find(p => p.id === productId);
@@ -583,14 +670,12 @@ if (keyBackspace) {
 if (submitPromoBtn) {
     submitPromoBtn.addEventListener('click', () => {
         if (currentPromoInput.trim() === '') {
-            alert('Please enter a valid code first!');
+            showToast('Please enter a valid code first!');
             return;
         }
         
-        // 1. Закриваємо модальне вікно промокоду
         promoModal.classList.add('hidden');
 
-        // 2. Показуємо велику, стильну та м'яку напівпрозову галочку
         const startScreen = document.getElementById('start-screen');
         if (startScreen) {
             const successPopup = document.createElement('div');
@@ -620,20 +705,22 @@ if (submitPromoBtn) {
             `;
             startScreen.appendChild(successPopup);
 
-            // Плавна поява з затримкою
             setTimeout(() => {
                 successPopup.style.opacity = '1';
                 successPopup.style.transform = 'translate(-50%, -50%) scale(1)';
             }, 50);
 
-            // 3. Автоматично додаємо акційний товар у кошик
             const promoProduct = products.find(p => p.id === 1) || products[0];
-            if (promoProduct && !cart.some(item => item.id === promoProduct.id)) {
-                cart.push(promoProduct);
+            if (promoProduct) {
+                const existingItem = cart.find(item => item.id === promoProduct.id);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ ...promoProduct, quantity: 1 });
+                }
                 updateCart();
             }
 
-            // 4. Збільшений час показу (1.8 секунди), щоб анімація гарно дивилась, після чого відкриваємо кошик
             setTimeout(() => {
                 successPopup.style.opacity = '0';
                 successPopup.style.transform = 'translate(-50%, -50%) scale(0.9)';
@@ -646,51 +733,35 @@ if (submitPromoBtn) {
                     renderProducts();
                 }
 
-                // Відкриваємо модальне вікно кошика
-                const checkoutModal = document.getElementById('checkout-modal');
-                const modalCartItems = document.getElementById('modal-cart-items');
-                const modalTotalAmount = document.getElementById('modal-total-amount');
-
-                if (checkoutModal && modalCartItems && modalTotalAmount) {
-                    modalCartItems.innerHTML = '';
-                    let total = 0;
-
-                    cart.forEach((item, index) => {
-                        total += item.price;
-                        const div = document.createElement('div');
-                        div.className = 'modal-cart-item';
-                        div.innerHTML = `
-                            <img src="${item.image}" alt="${item.name}">
-                            <div class="modal-cart-item-info">
-                               <h4>${item.name}</h4>
-                               <p>
-                                   <span style="text-decoration: line-through; color: #888; font-size: 0.85em; margin-right: 6px;">€${item.oldPrice ? item.oldPrice.toFixed(2) : (item.price * 1.2).toFixed(2)}</span>
-                                   €${item.price.toFixed(2)}
-                               </p>
-                            </div>
-                            <button class="remove-item-btn" data-index="${index}">&times;</button>
-                        `;
-                        modalCartItems.appendChild(div);
-                    });
-
-                    modalCartItems.querySelectorAll('.remove-item-btn').forEach(btn => {
-                        btn.addEventListener('click', (e) => {
-                            const idx = parseInt(e.target.dataset.index);
-                            cart.splice(idx, 1);
-                            updateCart();
-                            btn.closest('.modal-cart-item').remove();
-                            let newTotal = cart.reduce((sum, i) => sum + i.price, 0);
-                            modalTotalAmount.textContent = newTotal.toFixed(2);
-                            if (cart.length === 0) {
-                                checkoutModal.classList.add('hidden');
-                            }
-                        });
-                    });
-
-                    modalTotalAmount.textContent = total.toFixed(2);
-                    checkoutModal.classList.remove('hidden');
-                }
+                openModal();
             }, 1800);
         }
     });
+}
+
+function showToast(message) {
+    let container = document.getElementById('toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        document.body.appendChild(container);
+    }
+
+    container.innerHTML = '';
+
+    const toast = document.createElement('div');
+    toast.className = 'toast-message';
+    toast.textContent = message;
+    container.appendChild(toast);
+
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, 2000);
 }
