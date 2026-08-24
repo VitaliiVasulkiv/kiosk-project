@@ -508,25 +508,45 @@ function openModal() {
     modalCartItems.innerHTML = '';
     let total = 0;
 
-    cart.forEach((item) => {
-        total += item.price * item.quantity;
-        const div = document.createElement('div');
-        div.className = 'modal-cart-item';
-        div.innerHTML = `
-            <img src="${item.image}" alt="${item.name}">
-            <div class="modal-cart-item-info">
-                <h4>${item.name}</h4>
-                <p>€${(item.price * item.quantity).toFixed(2)}</p>
-            </div>
-            <div class="modal-cart-item-quantity" style="display: flex; align-items: center; gap: 10px; margin: 0 10px;">
-                <button class="qty-btn decrease-btn" data-id="${item.id}" style="width: 28px; height: 28px; border-radius: 6px; border: none; background: #ddd; font-weight: bold; cursor: pointer;">-</button>
-                <span style="font-weight: bold; min-width: 15px; text-align: center;">${item.quantity}</span>
-                <button class="qty-btn increase-btn" data-id="${item.id}" style="width: 28px; height: 28px; border-radius: 6px; border: none; background: #ddd; font-weight: bold; cursor: pointer;">+</button>
-            </div>
-            <button class="remove-item-btn" data-id="${item.id}">&times;</button>
-        `;
-        modalCartItems.appendChild(div);
-    });
+   cart.forEach((item, index) => {
+    total += item.price * item.quantity;
+    
+    // Перевірка категорій та популярних товарів
+   const itemNameLower = item.name.toLowerCase();
+    
+    // Перевіряємо, чи це справді кава (щоб виключити її з кастомізації)
+    const isCoffee = item.category === 'caffe' || itemNameLower.includes('cappuccino') || itemNameLower.includes('espresso') || itemNameLower.includes('coffee') || itemNameLower.includes('кава') || itemNameLower.includes('капучино');
+
+    const isBurgerOrMeal = item.category === 'burgers' || item.category === 'meals' || (item.category === 'popular' && (itemNameLower.includes('burger') || itemNameLower.includes('chicken') || itemNameLower.includes('meal')));
+    
+    // Напої (але НЕ кава!)
+    const isDrink = (item.category === 'drinks' || (item.category === 'popular' && (itemNameLower.includes('drink') || itemNameLower.includes('ice')))) && !isCoffee;
+    
+    // Кастомізація доступна для всього, окрім кави
+    const isCustomizable = (isBurgerOrMeal || isDrink) && !isCoffee;
+
+    const div = document.createElement('div');
+    div.className = 'modal-cart-item';
+    div.innerHTML = `
+        <img src="${item.image}" alt="${item.name}">
+        <div class="modal-cart-item-info">
+            <h4>${item.name}</h4>
+            <p>€${(item.price * item.quantity).toFixed(2)}</p>
+            ${item.modifiers && item.modifiers.length > 0 ? `<small style="color: #666; display: block;">${item.modifiers.join(', ')}</small>` : ''}
+        </div>
+        
+        <!-- Кнопка кастомізації з'явиться для потрібних товарів -->
+        ${isCustomizable ? `<button class="customize-btn" onclick="openCartCustomizer(${index})" style="background: none; border: none; cursor: pointer; font-size: 1.2rem; margin-right: 5px;" title="Customize">⚙️</button>` : ''}
+
+        <div class="modal-cart-item-quantity" style="display: flex; align-items: center; gap: 10px; margin: 0 10px;">
+            <button class="qly-btn decrease-btn" data-id="${item.id}" style="width: 28px; height: 28px; border-radius: 50%;">-</button>
+            <span style="font-weight: bold; min-width: 15px; text-align: center;">${item.quantity}</span>
+            <button class="qly-btn increase-btn" data-id="${item.id}" style="width: 28px; height: 28px; border-radius: 50%;">+</button>
+        </div>
+        <button class="remove-item-btn" data-id="${item.id}">&times;</button>
+    `;
+    modalCartItems.appendChild(div);
+});
 
     // Обробка кліків по кнопках +, -, та видалення хрестиком всередині модалки
     modalCartItems.onclick = (e) => {
@@ -765,3 +785,176 @@ function showToast(message) {
         }, 300);
     }, 2000);
 }
+let editingCartItemIndex = null;
+
+function openCartCustomizer(index) {
+    editingCartItemIndex = index;
+    const item = cart[index];
+    
+    const itemNameLower = item.name ? item.name.toLowerCase() : '';
+    
+    // ЗАХИСТ: Якщо це кава — вікно кастомізації не відкриваємо
+    if (item.category === 'caffe' || itemNameLower.includes('cappuccino') || itemNameLower.includes('espresso') || itemNameLower.includes('coffee') || itemNameLower.includes('кава') || itemNameLower.includes('капучино')) {
+        return; 
+    }
+
+    const nameElement = document.getElementById('customizing-item-name');
+    const foodGroup = document.getElementById('food-modifiers');
+    const drinkGroup = document.getElementById('drink-modifiers');
+    const modalContent = document.querySelector('#cart-customizer-modal .modal-content');
+
+    const isDrink = item.category === 'drinks' || itemNameLower.includes('cola') || itemNameLower.includes('drink') || itemNameLower.includes('ice');
+
+    // ДЛЯ НАПОЮ/ЛЬОДУ: очищаємо назву зверху, щоб не писало "Coca-Cola"
+    if (isDrink) {
+        if (nameElement) nameElement.innerText = ''; // Прибираємо текст зверху
+        if (foodGroup) foodGroup.classList.add('hidden');
+        if (drinkGroup) drinkGroup.classList.remove('hidden');
+        if (modalContent) modalContent.classList.add('is-drink-modal');
+    } else {
+        if (nameElement) nameElement.innerText = item.name; // Для бургерів/їжі залишаємо назву
+        if (drinkGroup) drinkGroup.classList.add('hidden');
+        if (foodGroup) foodGroup.classList.remove('hidden');
+        if (modalContent) modalContent.classList.remove('is-drink-modal');
+    }
+
+    // Встановлюємо значення лічильників
+    const activeGroup = isDrink ? drinkGroup : foodGroup;
+    if (activeGroup) {
+        activeGroup.querySelectorAll('.modifier-kiosk-card, .ice-circle-card').forEach(card => {
+            const modName = card.dataset.name;
+            const countSpan = card.querySelector('.mod-count, .ice-count-badge');
+            const cardType = card.dataset.type;
+            
+            if (countSpan) {
+                if (item.modifierCounts && item.modifierCounts[modName] !== undefined) {
+                    countSpan.innerText = item.modifierCounts[modName];
+                } else {
+                    countSpan.innerText = (cardType === 'removeable') ? '1' : '0';
+                }
+            }
+        });
+    }
+
+    const modal = document.getElementById('cart-customizer-modal');
+    if (modal) modal.classList.remove('hidden');
+}
+
+// ====== ВСІ ФУНКЦІЇ ДЛЯ КАСОМІЗАЦІЇ ТА ОБРОБНИК КЛИКІВ ======
+
+function closeCustomizerModal() {
+    const modal = document.getElementById('cart-customizer-modal');
+    const modalCont = document.querySelector('#cart-customizer-modal .modal-content');
+    
+    if (modal) modal.classList.add('hidden');
+    if (modalCont) modalCont.classList.remove('is-drink-modal');
+}
+
+// Універсальний обробник кліків
+document.addEventListener('click', function(e) {
+    const incBtn = e.target.closest('.inc-mod');
+    const decBtn = e.target.closest('.dec-mod');
+    const saveBtn = e.target.closest('#save-customization-btn, #save-drink-btn, .ice-save-btn, [id*="save"], .modal-content button:not(.close-modal):not([class*="close"])');
+    const closeBtn = e.target.closest('#close-cart-customizer, .close-modal, [class*="close"], [id*="close"]');
+
+    const customizerModal = document.getElementById('cart-customizer-modal');
+    if (!customizerModal || customizerModal.classList.contains('hidden')) return;
+    
+    if (!customizerModal.contains(e.target)) return;
+
+    // 1. Плюс
+    if (incBtn) {
+        const counter = incBtn.closest('.kiosk-counter, .ice-circle-card');
+        if (counter) {
+            const span = counter.querySelector('.mod-count, .ice-count-badge');
+            if (span) {
+                let val = parseInt(span.innerText) || 0;
+                if (val < 2) { 
+                    span.innerText = val + 1;
+                }
+            }
+        }
+        return;
+    }
+
+    // 2. Мінус
+    if (decBtn) {
+        const counter = decBtn.closest('.kiosk-counter, .ice-circle-card');
+        if (counter) {
+            const span = counter.querySelector('.mod-count, .ice-count-badge');
+            if (span) {
+                let val = parseInt(span.innerText) || 0;
+                if (val > 0) {
+                    span.innerText = val - 1;
+                }
+            }
+        }
+        return;
+    }
+
+    // 3. Збереження кастомізації
+    if (saveBtn && (saveBtn.innerText.toLowerCase().includes('save') || saveBtn.id.includes('save') || saveBtn.classList.contains('ice-save-btn'))) {
+        e.preventDefault();
+        
+        if (typeof editingCartItemIndex !== 'undefined' && cart[editingCartItemIndex]) {
+            const item = cart[editingCartItemIndex];
+            item.modifierCounts = {};
+            let selectedModifiers = [];
+            let extrasTotal = 0;
+
+            const modalContent = document.querySelector('#cart-customizer-modal .modal-content');
+            const isDrinkModal = modalContent && modalContent.classList.contains('is-drink-modal');
+            
+            const activeGroup = isDrinkModal 
+                ? document.getElementById('drink-modifiers') 
+                : document.getElementById('food-modifiers');
+            
+            if (activeGroup) {
+                activeGroup.querySelectorAll('.modifier-kiosk-card, .ice-circle-card').forEach(card => {
+                    const modName = card.dataset.name || 'Ice';
+                    const price = parseFloat(card.dataset.price) || 0;
+                    const cardType = card.dataset.type || 'extra';
+                    const countSpan = card.querySelector('.mod-count, .ice-count-badge');
+                    
+                    if (countSpan) {
+                        let count = parseInt(countSpan.innerText) || 0;
+                        item.modifierCounts[modName] = count;
+
+                        if (cardType === 'removeable' && count === 0) {
+                            selectedModifiers.push(`No ${modName}`);
+                        } else if (count > 0) {
+                            selectedModifiers.push(count > 1 ? `${modName} x${count}` : modName);
+                            extrasTotal += price * count; 
+                        }
+                    }
+                });
+            }
+
+            if (item.basePrice === undefined) {
+                item.basePrice = item.price - (item.extrasTotal || 0);
+            }
+
+            item.extrasTotal = extrasTotal;
+            item.price = item.basePrice + extrasTotal;
+            item.modifiers = selectedModifiers;
+
+            if (typeof updateCart === 'function') {
+                updateCart();
+            }
+            
+            if (typeof openModal === 'function' && !document.getElementById('checkout-modal').classList.contains('hidden')) {
+                openModal();
+            }
+        }
+
+        closeCustomizerModal();
+        return;
+    }
+
+    // 4. Закриття (хрестик)
+    if (closeBtn && (closeBtn.classList.contains('close-modal') || closeBtn.id.includes('close') || closeBtn.innerHTML.includes('×') || closeBtn.innerHTML.includes('X'))) {
+        e.preventDefault();
+        closeCustomizerModal();
+        return;
+    }
+});

@@ -1407,3 +1407,346 @@ body {
 .popular-wide-card .add-btn:hover {
     background: #e0322b !important;
 }
+/* Стиль великого кіоск-модального вікна */
+#cart-customizer-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#cart-customizer-modal:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+#cart-customizer-modal.hidden {
+    display: none !important;
+}
+
+/* Анімація появи виключно для білої картки ЇЖІ (бургери тощо) */
+@keyframes foodModalPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.85) translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Застосовуємо анімацію ТІЛЬКИ тоді, коли це НЕ модалка напою/льоду */
+#cart-customizer-modal .modal-content:not(.is-drink-modal) {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    font-family: inherit;
+    position: relative;
+    
+    animation: foodModalPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Заголовки */
+#cart-customizer-modal h3 {
+    font-size: 1.1rem;
+    color: #888;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+#cart-customizer-modal h2 {
+    font-size: 1.5rem;
+    color: #111;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Картки інгредієнтів */
+.modifier-kiosk-card {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 12px 16px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    gap: 15px;
+    border: 2px solid #e9ecef;
+}
+
+.modifier-kiosk-card img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.mod-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mod-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #212529;
+}
+
+.mod-price {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 2px;
+}
+
+/* Кнопки плюс/мінус */
+.kiosk-counter {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #ffffff;
+    padding: 6px 14px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.kiosk-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: #e31b23;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s, background 0.2s;
+}
+
+.kiosk-btn:active {
+    transform: scale(0.9);
+}
+
+.kiosk-btn:hover {
+    background: #c8151b;
+}
+
+.kiosk-counter .mod-count {
+    font-size: 1.1rem;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+    color: #212529;
+}
+
+/* Кнопка збереження */
+#save-customization-btn {
+    width: 100%;
+    background: #e31b23;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.2s;
+}
+
+#save-customization-btn:hover {
+    background: #c8151b;
+}
+
+/* Хрестик закриття */
+#close-cart-customizer {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #f1f3f5;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    transition: background 0.2s;
+}
+
+#close-cart-customizer:hover {
+    background: #e2e8f0;
+    color: #000;
+}
+/* Велика кругла скляна картка */
+/* Контейнер модалки, коли відкриті напої */
+#cart-customizer-modal .modal-content.kiosk-customizer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* 1. Анімація появи через @keyframes (найкраще працює для кіосків, бо не залежить від того, чи встиг JS додати клас) */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.85) translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+
+/* 1. Твоє велике розкішне коло на 520px */
+.ice-circle-card {
+    width: 600px !important;
+    height: 600px !important;
+    max-width: 100%;
+    background: url('https://th.bing.com/th/id/OIG3.Lv_HDw8q2qHrrSy7qeNe?pid=ImgGn') center 30% / cover no-repeat; /* Трохи змістили фокус фону, щоб кубик краще було видно */
+    border: 4px solid rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 30px 45px 30px !important;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: visible !important; /* ГОЛОВНЕ: тепер кнопки всередині точно реагуватимуть на кліки */
+    margin: 0 auto 15px auto !important;
+
+    animation: fadeInScale 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* 2. Текст "Ice?" — піднятий вище і з крутою глибокою тіттю */
+.ice-card-title {
+    font-size: 40px;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.95), 0 0 20px rgba(0, 0, 0, 0.7);
+    margin-top: 5px !important; /* Підняли вище від кубика */
+    z-index: 10;
+    letter-spacing: 1px;
+}
+
+/* 3. Панель управління (+ / -) */
+.ice-card-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 75%;
+    padding: 6px 12px;
+    margin-bottom: 15px;
+    z-index: 10;
+}
+
+.ice-control-btn.dec-mod,
+.ice-control-btn.inc-mod {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    color: #ffffff;
+    border: none;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.1s ease;
+    z-index: 15; /* Забезпечуємо клікабельність */
+}
+
+.ice-control-btn.dec-mod {
+    background-color: #c95d44;
+}
+
+.ice-control-btn.inc-mod {
+    background-color: #3b8a79;
+}
+
+.ice-control-btn:active {
+    transform: scale(0.92);
+}
+
+.ice-count-badge {
+    min-width: 56px;
+    height: 42px;
+    background-color: #2c3e50 !important;
+    color: #ffffff !important;
+    border-radius: 21px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px !important;
+    font-weight: 700;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.25), 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+/* 4. Кнопка "Save Changes" — більш округла (капсула), стильна та гарантовано клікабельна */
+#save-drink-btn, 
+.ice-circle-card + .save-customization-btn {
+    position: relative !important;
+    z-index: 100 !important; /* Найвищий шар, щоб нічого її не перекривало */
+    display: block !important;
+    width: 85% !important;
+    max-width: 320px;
+    margin: 10px auto 10px auto !important;
+    border-radius: 40px !important; /* Сильніше заокруглення капсулою */
+    padding: 15px 25px;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #ff6b52, #e54826);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 25px rgba(229, 72, 38, 0.5);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#save-drink-btn:hover, 
+.ice-circle-card + .save-customization-btn:hover {
+    background: linear-gradient(135deg, #ff7b63, #f0522d);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(229, 72, 38, 0.7);
+}
+
+#save-drink-btn:active, 
+.ice-circle-card + .save-customization-btn:active {
+    transform: translateY(1px) scale(0.98);
+}
+/* Якщо у модального вікна з'являється спеціальний клас, робимо його повністю прозорим */
+.modal-content.is-drink-modal {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+}

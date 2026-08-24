@@ -282,6 +282,75 @@
         <button id="finish-order-btn" class="success-finish-btn">Start New Order</button>
     </div>
 </div>
+<div id="cart-customizer-modal" class="hidden">
+    <div class="modal-content kiosk-customizer">
+        <button type="button" id="close-cart-customizer">&times;</button>
+        <h3 id="customizing-item-name">Item Name</h3>
+        <h2>Customize Item</h2>
+
+        <!-- БЛОК 1: ДЛЯ ЇЖІ (бургери, піца, сендвічі) -->
+        <div id="food-modifiers" class="modifier-group">
+            <div class="modifier-kiosk-card" data-name="Pickles" data-price="0.00" data-type="removeable">
+                <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=150" alt="Pickles">
+                <div class="mod-info">
+                    <span class="mod-title">Pickles</span>
+                    <span class="mod-price">Included</span>
+                </div>
+                <div class="kiosk-counter">
+                    <button type="button" class="kiosk-btn dec-mod">-</button>
+                    <span class="mod-count">1</span>
+                    <button type="button" class="kiosk-btn inc-mod">+</button>
+                </div>
+            </div>
+
+            <div class="modifier-kiosk-card" data-name="Tomato" data-price="0.00" data-type="removeable">
+                <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=150" alt="Tomato">
+                <div class="mod-info">
+                    <span class="mod-title">Tomato</span>
+                    <span class="mod-price">Included</span>
+                </div>
+                <div class="kiosk-counter">
+                    <button type="button" class="kiosk-btn dec-mod">-</button>
+                    <span class="mod-count">1</span>
+                    <button type="button" class="kiosk-btn inc-mod">+</button>
+                </div>
+            </div>
+
+            <div class="modifier-kiosk-card" data-name="Extra Cheese" data-price="1.00" data-type="extra">
+                <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=150" alt="Cheese">
+                <div class="mod-info">
+                    <span class="mod-title">Extra Cheese</span>
+                    <span class="mod-price">+€1.00</span>
+                </div>
+                <div class="kiosk-counter">
+                    <button type="button" class="kiosk-btn dec-mod">-</button>
+                    <span class="mod-count">0</span>
+                    <button type="button" class="kiosk-btn inc-mod">+</button>
+                </div>
+            </div>
+
+            <!-- Кнопка збереження спеціально для їжі (знизу модалки) -->
+            <button type="button" id="save-food-btn" class="main-btn save-customization-btn" style="margin-top: 20px; width: 100%; border-radius: 16px; padding: 16px;">Save Changes</button>
+        </div>
+
+
+<!-- БЛОК ДЛЯ НАПОЇВ -->
+<div id="drink-modifiers" class="modifier-group hidden">
+    <!-- Твоє гарне коло з льодом (без кнопки всередині) -->
+    <div class="ice-circle-card modifier-kiosk-card" data-name="Ice" data-price="0.00" data-type="removeable">
+        <div class="ice-card-title">Ice?</div>
+        
+        <div class="ice-card-controls">
+            <button type="button" class="ice-control-btn dec-mod">−</button>
+            <div class="ice-count-badge mod-count">1</div>
+            <button type="button" class="ice-control-btn inc-mod">+</button>
+        </div>
+    </div>
+
+    <!-- Кнопка тепер винесена нижче кола, але всередині блоку напоїв -->
+    <button type="button" id="save-drink-btn" class="save-customization-btn" style="margin-top: 20px; width: 100%; border-radius: 25px; padding: 16px; font-size: 18px; font-weight: 700; background: linear-gradient(135deg, #ff6b52, #e54826); color: #fff; border: none; cursor: pointer; box-shadow: 0 10px 20px rgba(229, 72, 38, 0.4);">Save Changes</button>
+</div>
+</div>
     <script src="script.js"></script>
 </body>
 </html>
